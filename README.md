@@ -1,3 +1,18 @@
+# Tanks of Freedom port to Godot 3
+
+This is a learning exercise by me, MrPhil, to port Tanks of Freedom from Godot 2 to Godot 3.  I'm not sure I'll complete it because my main goal is to learn about Godot and games made with it.
+
+Currently, I'm using branches for each step of the process so that it is easier to redo steps as I learn. (Although, I did commit a little bit or work to master after first before I thought it to do things this way.) Right there are two steps/branchs:
+- Pre-Export - Changes made in Godot 2.1.5 in advance of using the export tool
+- Export - Changes made by using the export tool
+- Godot 3.1.1 - changes made when opening the project in Godot 3.1.1
+
+The process and a log is in the text file PORT-TO-GODOT-3-LOG.md
+
+Below is the read me from the forked project https://github.com/w84death/Tanks-of-Freedom
+
+---
+
 # Tanks of Freedom
 
 ![Tanks of Freedom](https://i.imgur.com/Xa66BXO.png)

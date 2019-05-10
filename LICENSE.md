@@ -1,6 +1,7 @@
 # The MIT License (MIT)
 This license applies both to the code, and to all graphical assets within this repository.
 
+Copyright (c) 2019 Philip 'MrPhil' Ludington, mrphil@mrphilgames.com
 Copyright (c) 2015 P1X
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
