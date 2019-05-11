@@ -411,3 +411,4 @@ func set_current_team_label(team):
     if team == 1:
         self.current_team_blue.hide()
         self.current_team_red.show()
+

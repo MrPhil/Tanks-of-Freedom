@@ -108,7 +108,7 @@ func apply_saved_terrain():
                 for i in range(field['meta']['damage']):
                     terrain_object.set_damage()
                 self.root_node.current_map.map_layer_front.add_child(terrain_object)
-                terrain_object.set_pos(self.root_node.current_map_terrain.map_to_world(Vector2(field['x'], field['y'])))
+                terrain_object.set_position(self.root_node.current_map_terrain.map_to_world(Vector2(field['x'], field['y'])))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
 func apply_saved_ground():
     var abstract_field
@@ -338,3 +338,4 @@ func is_save_available():
     if self.loaded_data == null or not self.loaded_data.has('is_current'):
         return false
     return self.loaded_data['is_current']
+

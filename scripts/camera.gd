@@ -51,18 +51,18 @@ func _initialize():
     self.update_zoom()
 
     self.apply_default_camera()
-    self.update_camera_speed()
+    self.update_camera_speed_scale()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
 func update_zoom():
     self.scale = self.camera.get_zoom()
 
-func get_pos():
+func get_position():  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     return self.camera.get_offset()
 
-func set_pos(position):
+func set_position(position):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     self.camera.set_offset(position)
     self.target = position
-    self.pos = position
+    self.position = position  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     self.sX = position.x
     self.sY = position.y
 
@@ -168,7 +168,7 @@ func __do_panning(diff_x, diff_y):
     return true
 
 func stop():
-    self.set_pos(self.pos)
+    self.set_position(self.position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     self.panning = false
 
 func reset_player_cameras():
@@ -178,13 +178,14 @@ func reset_player_cameras():
     }
 
 func store_position_for_player(player):
-    self.position_for_player["player_" + str(player)] = self.get_pos()
+    self.position_for_player["player_" + str(player)] = self.get_position()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
 func restore_position_for_player(player):
     var position = self.position_for_player["player_" + str(player)]
 
     if position.x != 0 and position.y != 0:
-        self.set_pos(position)
+        self.set_position(position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
-func update_camera_speed():
+func update_camera_speed_scale():  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     self.camera_speed = self.camera_speeds[self.bag.root.settings['camera_speed']]
+

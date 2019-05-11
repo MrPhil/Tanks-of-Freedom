@@ -34,7 +34,7 @@ func make_request(api, resource, method, data, expect_json = true):
         result['message'] = 'Online functions are disabled'
         return result
 
-    var err = self.http_client.connect(api, self.api_port, self.api_use_ssl)
+    var err = self.http_client.connect_to_host(api, self.api_port, self.api_use_ssl)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
     if err != OK:
         result['status'] = 'error'
@@ -78,7 +78,7 @@ func make_request(api, resource, method, data, expect_json = true):
         result['headers'] = self.http_client.get_response_headers_as_dictionary()
         result['response_code'] = self.http_client.get_response_code()
 
-        var read_buffer = RawArray()
+        var read_buffer = PoolByteArray()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
         var chunk
 
         while self.http_client.get_status() == HTTPClient.STATUS_BODY:

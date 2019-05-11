@@ -92,7 +92,7 @@ func detach_panel():
     self.disable_delete_mode()
     self.lock_delete_mode_button()
     self.enable_list_switch()
-    self.picker.set_pos(Vector2(0, 0))
+    self.picker.set_position(Vector2(0, 0))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
 func fill_page():
     var maps_amount = self.get_maps_amount()
@@ -224,11 +224,11 @@ func fill_block(block, map, counter):
     button.get_node("title").set_text(label)
     button.connect("pressed", self, "map_selected", [map])
 
-    var position = button.get_pos()
+    var position = button.get_position()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     if counter % 2 == 1:
         position.x = self.OFFSET_X
     position.y = 15 + ((counter - (counter % 2)) / 2) * self.OFFSET_Y
-    block.set_pos(position)
+    block.set_position(position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
 func map_selected(name):
     self.root.sound_controller.play('menu')
@@ -310,3 +310,4 @@ func disable_list_switch():
 
 func enable_list_switch():
     self.button_enable_switch(self.online_button, true)
+

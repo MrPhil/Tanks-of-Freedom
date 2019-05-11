@@ -18,12 +18,12 @@ var explosion
 func get_pos_map():
 	return position_on_map
 
-func get_initial_pos():
-	position_on_map = current_map.world_to_map(self.get_pos())
+func get_initial_position():  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	position_on_map = current_map.world_to_map(self.get_position())  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 	return position_on_map
 
 func set_pos_map(new_position):
-	self.set_pos(current_map.map_to_world(new_position))
+	self.set_position(current_map.map_to_world(new_position))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 	position_on_map = new_position
 
 func set_damage():
@@ -37,7 +37,7 @@ func set_damage():
 			smoke.set_emitting(true)
 
 		var region = self.get_region_rect()
-		self.set_region_rect(Rect2(Vector2(region.pos.x, region.pos.y + 64), Vector2(region.size.x, region.size.y)))
+		self.set_region_rect(Rect2(Vector2(region.position.x, region.position.y + 64), Vector2(region.size.x, region.size.y)))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 		self.show_explosion()
 
 func show_explosion():
@@ -55,9 +55,9 @@ func connect_with_neighbours():
 	var other_pos
 	var this_pos
 
-	this_pos = self.get_initial_pos()
+	this_pos = self.get_initial_position()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 	for fence in all_fences:
-		other_pos = fence.get_initial_pos()
+		other_pos = fence.get_initial_position()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 		if other_pos == this_pos + Vector2(-1, 0):
 			neighbours += 2
 		if other_pos == this_pos + Vector2(1, 0):
@@ -117,3 +117,4 @@ func _ready():
 		self.snow_particles.append(self.get_node("snow1"))
 		self.snow_particles.append(self.get_node("snow2"))
 		self.enable_snow_particle()
+

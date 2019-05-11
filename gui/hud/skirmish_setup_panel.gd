@@ -130,3 +130,4 @@ func set_player_button_state(player, button):
         label = "LABEL_HUMAN"
 
     button.set_trans_key(label)
+

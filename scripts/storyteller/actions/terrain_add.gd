@@ -67,3 +67,4 @@ func _add_city_block(templates, position, frame):
 
     self.bag.root.current_map.attach_object(position, temp)
     self.bag.abstract_map.get_field(position).object = temp
+

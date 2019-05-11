@@ -30,3 +30,4 @@ func hide():
 func bind_match_data(data):
     self.match_panel.bind_match_data(data)
     self.show_match()
+

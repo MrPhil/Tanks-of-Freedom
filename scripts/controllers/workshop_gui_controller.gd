@@ -54,3 +54,4 @@ func toggle_block_blocks():
         self.hide_block_panel()
     else:
         self.show_block_panel()
+

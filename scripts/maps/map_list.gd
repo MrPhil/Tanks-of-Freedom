@@ -149,3 +149,4 @@ func mark_map_win(map_name):
 
 func has_remote_map(map_code):
     return self.remote_maps.has(map_code)
+

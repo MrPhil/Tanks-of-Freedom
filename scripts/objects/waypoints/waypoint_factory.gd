@@ -47,3 +47,4 @@ func mark_building_as_blocked(building):
             field.waypoint.mark_blocked()
 
 
+

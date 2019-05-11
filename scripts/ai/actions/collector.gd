@@ -85,3 +85,4 @@ func _get_building_brain(building):
 
 func _get_unit_brain(unit):
     return self.unit_brains[unit.type_name.to_lower()]
+

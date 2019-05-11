@@ -95,7 +95,7 @@ func undo_last_action():
     if self.history.size() > 0:
         last_action = history[history.size()-1]
         self.paint(last_action.position,last_action.tool_type,last_action.brush_type, true)
-        history.remove(history.size()-1)
+        history.remove_and_collide(history.size()-1)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
 func toolbox_fill():
     map.fill(settings.fill[settings.fill_selected[0]],settings.fill[settings.fill_selected[1]])
@@ -178,12 +178,12 @@ func _input(event):
         var camera_pos = self.camera.get_offset()
         var game_scale = self.camera.get_zoom()
 
-        if event.type == InputEvent.JOYSTICK_BUTTON or event.type == InputEvent.JOYSTICK_MOTION:
+        if event is InputEventJoypadButton or event is InputEventJoypadMotion:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             self.bag.gamepad.handle_input(event)
-        if self.root.is_pandora and event.type == InputEvent.KEY:
+        if self.root.is_pandora and event is InputEventKey:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             self.bag.pandora.handle_input(event)
 
-        if event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_LEFT:
+        if event is InputEventMouseButton && event.button_index == BUTTON_LEFT:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             if not self.movement_mode:
                 if event.pressed:
                     painting = true
@@ -193,39 +193,39 @@ func _input(event):
             else:
                 self.is_camera_drag = event.pressed
 
-        if event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_RIGHT:
+        if event is InputEventMouseButton && event.button_index == BUTTON_RIGHT:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             self.is_camera_drag = event.pressed
 
-        if event.type == InputEvent.MOUSE_MOTION || event.type == InputEvent.MOUSE_BUTTON:
+        if event is InputEventMouseMotion || event is InputEventMouseButton:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             var new_selector_x = (event.x - self.root.half_screen_size.x + camera_pos.x/game_scale.x) * (game_scale.x)
             var new_selector_y = (event.y - self.root.half_screen_size.y + camera_pos.y/game_scale.y) * (game_scale.y) + 5
             selector_position = terrain.world_to_map(Vector2(new_selector_x, new_selector_y))
             var position = terrain.map_to_world(selector_position)
             position.y = position.y + 4
-            selector.set_pos(position)
+            selector.set_position(position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
-        if (event.type == InputEvent.MOUSE_MOTION):
+        if (event is InputEventMouseMotion):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             painting_motion = true
             if self.is_camera_drag:
                 camera_pos.x = camera_pos.x - event.relative_x * game_scale.x
                 camera_pos.y = camera_pos.y - event.relative_y * game_scale.y
                 self.camera.set_offset(camera_pos)
 
-        if (event.type == InputEvent.MOUSE_MOTION or event.type == InputEvent.MOUSE_BUTTON) and painting and not self.bag.workshop_dead_zone.is_dead_zone(event.x, event.y):
-            #map_pos = terrain.get_global_pos() / Vector2(map.scale.x, map.scale.y)
+        if (event is InputEventMouseMotion or event is InputEventMouseButton) and painting and not self.bag.workshop_dead_zone.is_dead_zone(event.x, event.y):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+            #map_pos = terrain.get_global_position() / Vector2(map.scale.x, map.scale.y)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             #var position = terrain.map_to_world(selector_position)
             #position.x = (position.x + map_pos.x) * map.scale.x
             #position.y = (position.y + map_pos.y) * map.scale.y
             #if not self.bag.workshop_dead_zone.is_dead_zone(position.x, position.y):
             self.paint(selector_position)
 
-        if event.type == InputEvent.KEY:
+        if event is InputEventKey:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             if event.scancode == KEY_Z && event.pressed:
                 self.undo_last_action()
 
-        if event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_WHEEL_UP && event.pressed:
+        if event is InputEventMouseButton && event.button_index == BUTTON_WHEEL_UP && event.pressed:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             self.bag.camera.camera_zoom_in()
-        if event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_WHEEL_DOWN && event.pressed:
+        if event is InputEventMouseButton && event.button_index == BUTTON_WHEEL_DOWN && event.pressed:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             self.bag.camera.camera_zoom_out()
 
     if Input.is_action_pressed('ui_cancel') && not self.root.is_map_loaded && (event.type != InputEvent.KEY || not event.is_echo()):
@@ -254,22 +254,22 @@ func close_message():
 
 func center_camera():
     var center_position = Vector2(self.bag.abstract_map.MAP_MAX_X / 2, self.bag.abstract_map.MAP_MAX_Y / 2)
-    self.set_camera_map_pos(center_position)
-    self.set_selector_map_pos(center_position)
+    self.set_camera_map_position(center_position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+    self.set_selector_map_position(center_position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
-func set_camera_map_pos(position):
+func set_camera_map_position(position):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     if position.x < 0 or position.y < 0 or position.x > self.bag.abstract_map.MAP_MAX_X or position.y > self.bag.abstract_map.MAP_MAX_Y:
         return
 
     self.camera.set_offset(self.terrain.map_to_world(position))
 
-func set_selector_map_pos(pos):
+func set_selector_map_position(pos):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     if pos.x < 0 or pos.y < 0 or pos.x > self.bag.abstract_map.MAP_MAX_X or pos.y > self.bag.abstract_map.MAP_MAX_Y:
         return
 
     var position = self.terrain.map_to_world(pos)
     position.y += 4
-    selector.set_pos(position)
+    selector.set_position(position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     self.selector_position = pos
 
 func show():
@@ -277,3 +277,4 @@ func show():
         self.center_camera()
     camera.set_zoom(self.bag.camera.camera.get_zoom())
     .show()
+

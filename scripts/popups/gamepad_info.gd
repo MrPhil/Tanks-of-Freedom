@@ -27,3 +27,4 @@ func hide():
         self.bag.timers.set_timeout(0.1, self.bag.root.menu.settings_nav_pad, "grab_focus")
     else:
         self.bag.timers.set_timeout(0.1, self.bag.root.menu.campaign_button, "grab_focus")
+

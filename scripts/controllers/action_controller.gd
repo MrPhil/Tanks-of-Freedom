@@ -130,7 +130,7 @@ func __handle_unit_actions(active_field, field):
         if field.has_unit():
             return self.handle_battle(active_field, field)
         elif active_field.object.type == 0 && field.has_building():
-            if self.root_node.bag.movement_controller.can_move(active_field, field):
+            if self.root_node.bag.movement_controller.can_move_and_collide(active_field, field):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 return self.capture_building(active_field, field)
     else:
         return self.status.list[self.status.CANNOT_DO]
@@ -173,7 +173,7 @@ func activate_field(field):
     self.root_node.bag.abstract_map.tilemap.move_child(active_indicator, 0)
     var position = Vector2(self.root_node.bag.abstract_map.tilemap.map_to_world(field.position))
     position.y += 2
-    active_indicator.set_pos(position)
+    active_indicator.set_position(position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     sound_controller.play('select')
     if not self.is_cpu_player:
         if field.has_unit():
@@ -231,11 +231,11 @@ func add_interaction_indicators(field):
 
         if neighbour.has_attackable_enemy(field.object):
             self.__show_indicator(indicator, indicator_position + Vector2(1,1), "attack")
-        elif neighbour.has_capturable_building(field.object) && self.root_node.bag.movement_controller.can_move(field, neighbour):
+        elif neighbour.has_capturable_building(field.object) && self.root_node.bag.movement_controller.can_move_and_collide(field, neighbour):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             self.__show_indicator(indicator, indicator_position, "enter")
 
 func __show_indicator(indicator, position, type):
-    indicator.set_pos(position)
+    indicator.set_position(position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     indicator.show()
     indicator.get_node('anim').play(type)
 
@@ -292,7 +292,7 @@ func import_objects():
 
 func attach_objects(collection):
     for entity in collection:
-        self.root_node.bag.abstract_map.get_field(entity.get_initial_pos()).object = entity
+        self.root_node.bag.abstract_map.get_field(entity.get_initial_position()).object = entity  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
 func end_turn():
     sound_controller.play('end_turn')
@@ -653,4 +653,5 @@ func switch_unit(direction):
         if self.active_field != null:
             self.root_node.move_selector_to_map_position(self.active_field.position)
             self.move_camera_to_point(self.active_field.position)
+
 

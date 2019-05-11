@@ -449,13 +449,13 @@ func __toggle_overscan():
 func __toggle_camera_move_to_bunker():
     __toggle_button('camera_move_to_bunker', 'camera_move_to_bunker_label')
 
-func __toggle_ai_speed():
+func __toggle_ai_speed_scale():  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     __toggle_multioption_button('ai_speed', 'ai_speed_label', self.speed_states)
-    self.root.bag.perform.update_ai_speed()
+    self.root.bag.perform.update_ai_speed_scale()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
-func __toggle_camera_speed():
+func __toggle_camera_speed_scale():  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     __toggle_multioption_button('camera_speed', 'camera_speed_label', self.speed_states)
-    self.root.bag.camera.update_camera_speed()
+    self.root.bag.camera.update_camera_speed_scale()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
 func __toggle_tooltips():
     __toggle_button('tooltips_enabled', 'tooltips_button')
@@ -474,3 +474,4 @@ func __toggle_button(setting_name, setting_label, button_states = self.button_st
 
 func __set_togglable_label(setting_name, label_name, button_states = self.button_states):
     self.get(label_name).set_trans_key(button_states[root.settings[setting_name]])
+

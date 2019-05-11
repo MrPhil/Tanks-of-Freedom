@@ -39,3 +39,4 @@ func set_latest_migration():
     for migration in self.migrations:
         if migration.version > self.current_version:
             self.current_version = migration.version
+

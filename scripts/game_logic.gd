@@ -93,39 +93,39 @@ func _input(event):
     if is_map_loaded && is_paused == false:
         if is_locked_for_cpu == false or self.bag.match_state.is_multiplayer:
             game_scale = self.camera.get_scale()
-            camera_pos = self.camera.get_pos()
-            if event.type == InputEvent.MOUSE_BUTTON && (event.button_index == BUTTON_LEFT or event.button_index == BUTTON_RIGHT) && self.is_map_loaded:
+            camera_pos = self.camera.get_position()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+            if event is InputEventMouseButton && (event.button_index == BUTTON_LEFT or event.button_index == BUTTON_RIGHT) && self.is_map_loaded:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 self.is_camera_drag = event.pressed
                 self.bag.camera.mouse_dragging = event.pressed
-            if (event.type == InputEvent.MOUSE_MOTION or event.type == InputEvent.MOUSE_BUTTON):
+            if (event is InputEventMouseMotion or event is InputEventMouseButton):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 var new_selector_x = (event.x - self.half_screen_size.x + camera_pos.x/game_scale.x) * (game_scale.x)
                 var new_selector_y = (event.y - self.half_screen_size.y + camera_pos.y/game_scale.y) * (game_scale.y) + 5
                 selector_position = current_map_terrain.world_to_map(Vector2(new_selector_x, new_selector_y))
-            if (event.type == InputEvent.MOUSE_MOTION):
+            if (event is InputEventMouseMotion):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 var position = current_map_terrain.map_to_world(selector_position)
                 position.y += 4
-                selector.set_pos(position)
+                selector.set_position(position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 if self.is_camera_drag:
                     camera_pos.x = camera_pos.x - event.relative_x * game_scale.x
                     camera_pos.y = camera_pos.y - event.relative_y * game_scale.y
-                    self.camera.set_pos(camera_pos)
+                    self.camera.set_position(camera_pos)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
         if is_locked_for_cpu == false:
-            if event.type == InputEvent.JOYSTICK_BUTTON or event.type == InputEvent.JOYSTICK_MOTION:
+            if event is InputEventJoypadButton or event is InputEventJoypadMotion:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 self.bag.gamepad.handle_input(event)
-            if self.is_pandora and event.type == InputEvent.KEY:
+            if self.is_pandora and event is InputEventKey:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 self.bag.pandora.handle_input(event)
 
 
-            if (event.type == InputEvent.MOUSE_MOTION):
+            if (event is InputEventMouseMotion):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 var position = current_map_terrain.map_to_world(selector_position)
                 position.y += 4
-                selector.set_pos(position)
+                selector.set_position(position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 if self.registered_click and abs(event.x - self.registered_click_position.x) > self.registered_click_threshold and abs(event.y - self.registered_click_position.y) > self.registered_click_threshold:
                     self.registered_click = false
 
             # MOUSE SELECT
-            if event.type == InputEvent.MOUSE_BUTTON and event.button_index == BUTTON_LEFT:
+            if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 if not self.bag.hud_dead_zone.is_dead_zone(event.x, event.y):
                     var position = current_map_terrain.map_to_world(selector_position)
                     if not self.bag.hud_dead_zone.is_dead_zone(event.x, event.y):
@@ -137,28 +137,28 @@ func _input(event):
                                 action_controller.handle_action(selector_position)
                                 self.registered_click = false
 
-        if event.type == InputEvent.KEY && event.scancode == KEY_H && event.pressed:
+        if event is InputEventKey && event.scancode == KEY_H && event.pressed:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             if hud.is_visible():
                 hud.hide()
             else:
                 hud.show()
 
-        if event.type == InputEvent.KEY && event.scancode == KEY_C && event.pressed:
+        if event is InputEventKey && event.scancode == KEY_C && event.pressed:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             action_controller.switch_unit(self.bag.unit_switcher.NEXT)
-        if event.type == InputEvent.KEY && event.scancode == KEY_X && event.pressed:
+        if event is InputEventKey && event.scancode == KEY_X && event.pressed:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             action_controller.switch_unit(self.bag.unit_switcher.BACK)
-        if event.type == InputEvent.KEY && event.scancode == KEY_B && event.pressed:
+        if event is InputEventKey && event.scancode == KEY_B && event.pressed:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             self.bag.camera.move_to_map_center()
         if self.is_debug:
-            if event.type == InputEvent.KEY && event.scancode == KEY_F && event.pressed:
+            if event is InputEventKey && event.scancode == KEY_F && event.pressed:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 self.bag.fog_controller.toggle_fog()
-            if event.type == InputEvent.KEY && event.scancode == KEY_V && event.pressed:
+            if event is InputEventKey && event.scancode == KEY_V && event.pressed:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 print(current_map_terrain.world_to_map(current_map_terrain.map_to_world(selector_position)))
 
 
-        if event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_WHEEL_UP && event.pressed:
+        if event is InputEventMouseButton && event.button_index == BUTTON_WHEEL_UP && event.pressed:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             self.bag.camera.camera_zoom_in()
-        if event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_WHEEL_DOWN && event.pressed:
+        if event is InputEventMouseButton && event.button_index == BUTTON_WHEEL_DOWN && event.pressed:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             self.bag.camera.camera_zoom_out()
 
     if Input.is_action_pressed('ui_cancel') && (event.type != InputEvent.KEY || not event.is_echo()):
@@ -173,7 +173,7 @@ func move_selector_to_map_position(pos):
 
     var position = current_map_terrain.map_to_world(pos)
     position.y += 4
-    selector.set_pos(position)
+    selector.set_position(position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     selector_position = pos
 
 func load_map(template_name, workshop_file_name = false, load_saved_state = false, is_remote = false, post_load_object = null, post_load_method = null):
@@ -434,3 +434,4 @@ func _ready():
     self.bag.language.reload_labels()
     if self.is_mobile:
         self.get_tree().set_auto_accept_quit(false)
+

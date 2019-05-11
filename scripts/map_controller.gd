@@ -128,9 +128,9 @@ func move_to(target):
         self.camera.target = target;
 
 func set_map_pos_global(position):
-    self.camera.set_pos(position)
+    self.camera.set_position(position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
-func set_map_pos(position):
+func set_map_position(position):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     self.game_size = self.root.get_size()
     position = self.terrain.map_to_world(position*Vector2(-1,-1)) + Vector2(self.game_size.x/(2*self.scale.x), self.game_size.y/(2*self.scale.y))
     self.set_map_pos_global(position)
@@ -192,11 +192,11 @@ func generate_map():
                         temp = map_movable.instance()
                         temp.set_frame(16 + (randi()%8))
             if temp:
-                temp.set_pos(terrain.map_to_world(Vector2(x, y)))
+                temp.set_position(terrain.map_to_world(Vector2(x, y)))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 map_layer_back.add_child(temp)
                 temp = null
             if temp2:
-                temp2.set_pos(terrain.map_to_world(Vector2(x, y)))
+                temp2.set_position(terrain.map_to_world(Vector2(x, y)))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
                 map_layer_back.add_child(temp2)
                 temp2 = null
 
@@ -340,7 +340,7 @@ func generate_map():
     return
 
 func attach_object(position, object):
-    object.set_pos(terrain.map_to_world(position))
+    object.set_position(terrain.map_to_world(position))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     map_layer_front.add_child(object)
     self.find_spawn_for_building(position.x, position.y, object)
 
@@ -534,11 +534,11 @@ func spawn_unit(x, y, type):
             temp = map_civilians[randi() % map_civilians.size()].instance()
             new_x = (randi() % MOVE_OFFSET) - (MOVE_OFFSET/2)
             new_y = (randi() % MOVE_OFFSET) - (MOVE_OFFSET/2)
-            temp.set_pos(terrain.map_to_world(Vector2(x,y)) + Vector2(new_x, new_y))
+            temp.set_position(terrain.map_to_world(Vector2(x,y)) + Vector2(new_x, new_y))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             map_layer_front.add_child(temp)
     else:
         temp = map_units[type].instance()
-        temp.set_pos(terrain.map_to_world(Vector2(x,y)))
+        temp.set_position(terrain.map_to_world(Vector2(x,y)))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
         temp.position_on_map = Vector2(x,y)
         map_layer_front.add_child(temp)
     return temp
@@ -553,7 +553,7 @@ func generate_underground(x, y):
         temp.set_frame(1)
     if neighbours in [20]:
         temp.set_frame(2)
-    temp.set_pos(terrain.map_to_world(Vector2(x+1,y+1)))
+    temp.set_position(terrain.map_to_world(Vector2(x+1,y+1)))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     underground.add_child(temp)
     temp = null
 
@@ -569,7 +569,7 @@ func generate_wave(x, y):
 
     if generate:
         temp = wave.instance()
-        temp.set_pos(terrain.map_to_world(Vector2(x+1,y+1)))
+        temp.set_position(terrain.map_to_world(Vector2(x+1,y+1)))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
         underground.add_child(temp)
         temp = null
         return true
@@ -722,7 +722,7 @@ func _ready():
         scale = self.camera.get_scale()
     else:
         self.set_default_zoom()
-    pos = terrain.get_pos()
+    pos = terrain.get_position()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
     self.shake_timer.set_wait_time(shake_time / shakes_max)
     self.shake_timer.set_one_shot(true)
@@ -741,7 +741,7 @@ func _ready():
 func shake_camera():
     if root.settings['shake_enabled'] and not mouse_dragging:
         self.shakes = 0
-        shake_initial_position = terrain.get_pos()
+        shake_initial_position = terrain.get_position()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
         self.do_single_shake()
 
 func do_single_shake():
@@ -758,15 +758,15 @@ func do_single_shake():
 
         pos = Vector2(shake_initial_position) + Vector2(distance_x, distance_y)
         target = pos
-        underground.set_pos(pos)
-        terrain.set_pos(pos)
+        underground.set_position(pos)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+        terrain.set_position(pos)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
         self.shakes += 1
         self.shake_timer.start()
     else:
         pos = shake_initial_position
         target = pos
-        self.underground.set_pos(shake_initial_position)
-        self.terrain.set_pos(shake_initial_position)
+        self.underground.set_position(shake_initial_position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+        self.terrain.set_position(shake_initial_position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
 func switch_to_tileset(tileset):
     self.get_node('terrain').set_tileset(self.bag.tileset_handler.available_tilesets[tileset])
@@ -779,4 +779,5 @@ func switch_to_tileset(tileset):
 func _init_bag(bag):
     self.bag = bag
     self.campaign = bag.campaign
+
 

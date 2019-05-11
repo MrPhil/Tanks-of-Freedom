@@ -67,3 +67,4 @@ func connect(bound_object, bound_method):
 func call_bound_object(confirmation):
     if self.bound_object != null:
         self.bound_object.call(self.bound_method, confirmation)
+

@@ -175,3 +175,4 @@ func update_campaign_progress(map_number):
     progress_file.open("user://campaign_progress.tof",File.WRITE)
     progress_file.store_var(map_number)
     progress_file.close()
+

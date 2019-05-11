@@ -108,3 +108,4 @@ func scale_menu_background(resolution):
 
 func refresh_menu_background():
     self.scale_menu_background(self.root.settings['resolution'])
+

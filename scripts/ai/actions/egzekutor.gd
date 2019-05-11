@@ -19,5 +19,6 @@ func execute(action):
 
 func _get_hand(action):
     for hand_name in self.hands:
-        if action extends self.hands[hand_name].handled_action:
+        if action is self.hands[hand_name].handled_action:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
             return self.hands[hand_name]
+

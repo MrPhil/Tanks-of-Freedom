@@ -64,3 +64,4 @@ func _count_units(units):
         counts[units[key].type_name] += 1
 
     return counts
+

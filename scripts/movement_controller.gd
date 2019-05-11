@@ -1,4 +1,4 @@
-var tile_types = StringArray([
+var tile_types = PoolStringArray([  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     'plain','plain','plain','plain','plain','plain','plain','plain',
     'plain','plain','plain','plain','plain','road','road','road',
     'road','river','road',
@@ -29,7 +29,7 @@ func has_enough_ap(from, cost):
     else:
         return false
 
-func can_move(from, to):
+func can_move_and_collide(from, to):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     if from.object.ap >= self.DEFAULT_COST:
         return true
     else:

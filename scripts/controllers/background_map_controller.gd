@@ -30,7 +30,7 @@ func update_background_scale():
     if self.background_map != null:
         self.background_map.scale = self.root.scale_root.get_scale()
         if not self.root.is_map_loaded:
-            self.root.camera.set_pos(Vector2(-200, 500))
+            self.root.camera.set_position(Vector2(-200, 500))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
 func __flush_group(name):
     var collection = self.root.get_tree().get_nodes_in_group(name)

@@ -111,3 +111,4 @@ func _has_unit_modifications():
             return true
 
     return false
+

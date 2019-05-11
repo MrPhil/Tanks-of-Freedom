@@ -253,3 +253,4 @@ func hide_map_download_done_message():
     self.background.show()
     self.middle_container.hide()
     self.download_button.grab_focus()
+

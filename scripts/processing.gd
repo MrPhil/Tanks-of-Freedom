@@ -14,7 +14,7 @@ func register(object):
     self.objects[object.get_instance_ID()] = wrapper
     self.bag.root.add_child(wrapper)
 
-func remove(object):
+func remove_and_collide(object):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     var wrapper = self.objects[object.get_instance_ID()]
     wrapper.kill()
     self.bag.root.remove_child(wrapper)
@@ -22,4 +22,5 @@ func remove(object):
 
 func reset():
     for object in self.objects.values():
-        self.remove(object)
+        self.remove_and_collide(object)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+

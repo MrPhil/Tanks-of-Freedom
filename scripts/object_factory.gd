@@ -35,3 +35,4 @@ func build_helicopter(player):
 		return blue_helicopter_template.instance()
 	if (player == player_red):
 		return red_helicopter_template.instance()
+

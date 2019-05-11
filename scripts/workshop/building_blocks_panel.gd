@@ -130,7 +130,7 @@ func fill_blocks_panel(blocks):
             position.y = position.y + 100
         elif index > 0:
             position.x = position.x + 100
-        new_block.set_pos(position)
+        new_block.set_position(position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
         index = index + 1
         self.current_blocks.append(new_block)
 
@@ -147,4 +147,5 @@ func __trans(elements):
         element[0] = tr("LABEL_WORKSHOP_" + element[0] )
 
     return elements
+
 

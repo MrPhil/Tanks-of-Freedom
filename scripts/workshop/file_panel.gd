@@ -29,7 +29,7 @@ func init_root(root_node):
 func bind_panel(file_panel_wrapper_node):
     self.file_panel_wrapper = file_panel_wrapper_node
     self.file_panel = self.file_panel_wrapper.get_node("center/file_panel")
-    self.position = self.file_panel.get_pos()
+    self.position = self.file_panel.get_position()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     self.save_animation = self.file_panel.get_node("controls/progress_animation")
     self.file_panel_top_controls = self.file_panel.get_node('controls/top')
     self.file_name = self.file_panel_top_controls.get_node("file_name")
@@ -61,7 +61,7 @@ func toggle_file_panel():
     else:
         self.position.y = self.positions[1]
         self.file_panel_top_controls.show()
-    self.file_panel.set_pos(self.position)
+    self.file_panel.set_position(self.position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
 func save_button_pressed():
     self.root.sound_controller.play('menu')
@@ -132,3 +132,4 @@ func is_extended():
     if self.position.y == self.positions[0]:
         return false
     return true
+

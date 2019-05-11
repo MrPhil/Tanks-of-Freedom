@@ -196,3 +196,4 @@ func _get_capture_actions(entity, enemies, buildings, allies, own_buildings):
 func _get_other_actions(entity, enemies, buildings, allies, own_buildings):
     return []
 
+

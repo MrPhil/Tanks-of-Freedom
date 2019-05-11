@@ -86,3 +86,4 @@ func prepopulate(text):
     self.input_box.set_text(str(text))
 func clear_prepopulate():
     self.prepopulate("")
+

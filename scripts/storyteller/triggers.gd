@@ -60,3 +60,4 @@ func feed_story_event(story_event):
 
 func suspend(trigger_name, is_suspended=true):
     self.current_triggers[trigger_name]['suspended'] = is_suspended
+
