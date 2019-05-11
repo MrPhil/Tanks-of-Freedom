@@ -171,7 +171,7 @@ func activate_field(field):
         active_indicator.get_parent().remove_child(active_indicator)
     self.root_node.bag.abstract_map.tilemap.add_child(active_indicator)
     self.root_node.bag.abstract_map.tilemap.move_child(active_indicator, 0)
-    var position = Vector2(self.root_node.bag.abstract_map.tilemap.map_to_world(field.position))
+    var position = self.root_node.bag.abstract_map.tilemap.map_to_world(field.position)
     position.y += 2
     active_indicator.set_position(position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
     sound_controller.play('select')
@@ -222,12 +222,12 @@ func add_interaction_indicators(field):
         indicator = self.interaction_indicators[direction]['indicator']
         indicator.hide()
 
-        neighbour = self.root_node.bag.abstract_map.get_field(Vector2(field.position) + self.interaction_indicators[direction]['offset'])
+        neighbour = self.root_node.bag.abstract_map.get_field(field.position + self.interaction_indicators[direction]['offset'])
 
         if neighbour.is_empty():
             continue
 
-        indicator_position = Vector2(self.root_node.bag.abstract_map.tilemap.map_to_world(neighbour.position))
+        indicator_position = self.root_node.bag.abstract_map.tilemap.map_to_world(neighbour.position)
 
         if neighbour.has_attackable_enemy(field.object):
             self.__show_indicator(indicator, indicator_position + Vector2(1,1), "attack")

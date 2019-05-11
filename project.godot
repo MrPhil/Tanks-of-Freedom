@@ -79,6 +79,10 @@ gamepad_prev={
 
 translations=[ "res://translations/_imported/translations.en.translation", "res://translations/_imported/translations.fr.translation", "res://translations/_imported/translations.pl.translation", "res://translations/_imported/translations.de.translation", "res://translations/_imported/translations.ja.translation", "res://translations/_imported/translations.ru.translation", "res://translations/_imported/translations.es.translation", "res://translations/_imported/campaign.en.translation", "res://translations/_imported/campaign.fr.translation", "res://translations/_imported/campaign.pl.translation", "res://translations/_imported/campaign.de.translation", "res://translations/_imported/campaign.ja.translation", "res://translations/_imported/campaign.ru.translation", "res://translations/_imported/campaign.es.translation" ]
 
+[logging]
+
+file_logging/enable_file_logging=true
+
 [network]
 
 ssl/certificates="res://assets/dst.crt"

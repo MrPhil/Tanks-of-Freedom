@@ -10,12 +10,12 @@ var api_use_ssl = false
 func _initialize():
     self.http_client = HTTPClient.new()
 
-    self.enabled = Globals.get('tof/online')
-    self.api_location = Globals.get('tof/api_location')
-    self.api_port = Globals.get('tof/api_port')
-    self.api_use_ssl = Globals.get('tof/api_use_ssl')
+    self.enabled = ProjectSettings.get('tof/online')
+    self.api_location = ProjectSettings.get('tof/api_location')
+    self.api_port = ProjectSettings.get('tof/api_port')
+    self.api_use_ssl = ProjectSettings.get('tof/api_use_ssl')
 
-func get(api, resource, expect_json = true):
+func httpGet(api, resource, expect_json = true):
     return self.make_request(api, resource, HTTPClient.METHOD_GET, null, expect_json)
 
 func post(api, resource, data = "", expect_json = true):

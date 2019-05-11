@@ -152,9 +152,9 @@ func process(delta):
         self.forced_movement = false
 
     if self.do_cinematic_pan:
-        self.do_awesome_cinematic_pan()
+        .do_awesome_cinematic_pan()
         if self.awesome_explosions_interval_counter == self.awesome_explosions_interval:
-            self.do_awesome_random_explosions()
+            .do_awesome_random_explosions()
             self.awesome_explosions_interval_counter = 0
         else:
             self.awesome_explosions_interval_counter += 1

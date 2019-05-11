@@ -51,7 +51,7 @@ func bind_hud():
     self.online_button = self.picker.get_node("controls/online")
     self.online_button_label = self.online_button.get_node("Label")
 
-    if not Globals.get('tof/online'):
+    if not ProjectSettings.get('tof/online'):
         self.online_button.hide()
 
 func connect_buttons():
@@ -88,7 +88,7 @@ func detach_panel():
     if self.current_container != null:
         self.current_container.remove_child(self.picker)
         self.current_container = null
-    self.disconnect()
+    self.localDisconnect()
     self.disable_delete_mode()
     self.lock_delete_mode_button()
     self.enable_list_switch()
@@ -234,11 +234,11 @@ func map_selected(name):
     self.root.sound_controller.play('menu')
     self.call_bound_object(name)
 
-func connect(object, method):
+func localConnect(object, method):
     self.bound_object = object
     self.bound_method = method
 
-func disconnect():
+func localDisconnect():
     self.bound_object = null
     self.bound_method = null
 

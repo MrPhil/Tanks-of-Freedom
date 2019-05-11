@@ -55,7 +55,6 @@ var settings = {
     'ENV' : 'dev',
     'seen_gamepad' : false,
     'ai_speed': 1,
-    "camera_move_to_bunker": true,
     "camera_speed": 1,
     "tooltips_enabled" : true,
 }
@@ -70,11 +69,11 @@ var is_camera_drag = false
 var settings_file = File.new()
 var workshop_file_name
 var is_remote = false
-var is_pandora = Globals.get("tof/pandora_input")
-var is_mobile = Globals.get("tof/mobile_prompt")
-var is_debug = Globals.get("tof/debug_mode")
-var click_fix_position = Globals.get("tof/selector_offset")
-var hud_layout = Globals.get("tof/hud_layout")
+var is_pandora = ProjectSettings.get("tof/pandora_input")
+var is_mobile = ProjectSettings.get("tof/mobile_prompt")
+var is_debug = ProjectSettings.get("tof/debug_mode")
+var click_fix_position = ProjectSettings.get("tof/selector_offset")
+var hud_layout = ProjectSettings.get("tof/hud_layout")
 
 var registered_click = false
 var registered_click_position = Vector2(0, 0)

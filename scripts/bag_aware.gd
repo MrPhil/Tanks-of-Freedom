@@ -1,3 +1,5 @@
+extends Node
+
 var bag = null
 
 func _init_bag(bag):
@@ -5,4 +7,5 @@ func _init_bag(bag):
     self._initialize()
 
 func _initialize():
-    #do nothing
+	#do nothing
+	pass

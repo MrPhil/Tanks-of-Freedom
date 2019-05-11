@@ -21,8 +21,8 @@ var game_size
 var scale
 var root
 var camera
-var theme
-
+# TODO: Did this work? Or is the parent's version used differently?
+# var theme 
 var shake_timer = Timer.new()
 var shakes = 0
 export var shakes_max = 5
@@ -756,7 +756,7 @@ func do_single_shake():
         if direction_y <= 0.5:
             distance_y = -distance_y
 
-        pos = Vector2(shake_initial_position) + Vector2(distance_x, distance_y)
+        pos = shake_initial_position + Vector2(distance_x, distance_y)
         target = pos
         underground.set_position(pos)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
         terrain.set_position(pos)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review

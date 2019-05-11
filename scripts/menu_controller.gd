@@ -78,29 +78,29 @@ var camera_speed_label
 func _ready():
     self.control_nodes = [self.get_node("top"), self.get_node("middle"), self.get_node("bottom")]
 
-    workshop_button = get_node("bottom/center/workshop")
-    if !Globals.get('tof/enable_workshop'):
+    workshop_button = .get_node("bottom/center/workshop")
+    if !ProjectSettings.get('tof/enable_workshop'):
         workshop_button.hide()
 
-    campaign_button = get_node("bottom/center/start_campaign")
-    self.background_gradient = self.get_node('vigette/center/sprite')
+    campaign_button = .get_node("bottom/center/start_campaign")
+    self.background_gradient = .get_node('vigette/center/sprite')
 
-    play_button = get_node("bottom/center/play")
-    close_button = get_node("top/center/close")
-    quit_button = get_node("top/center/quit")
-    demo_button = get_node("top/center/demo")
-    online_button = get_node("bottom/center/online")
+    play_button = .get_node("bottom/center/play")
+    close_button = .get_node("top/center/close")
+    quit_button = .get_node("top/center/quit")
+    demo_button = .get_node("top/center/demo")
+    online_button = .get_node("bottom/center/online")
 
-    if not Globals.get('tof/online'):
+    if not ProjectSettings.get('tof/online'):
         online_button.hide()
 
     close_button_label = close_button.get_node('Label')
 
-    main_menu = get_node("middle/center/game_panel")
-    self.settings_button = get_node("top/center/settings")
+    main_menu = .get_node("middle/center/game_panel")
+    self.settings_button = .get_node("top/center/settings")
 
     # S E T T I N G S
-    self.settings = get_node("middle/center/settings_panel")
+    self.settings = .get_node("middle/center/settings_panel")
     self.settings_title = self.settings.get_node("header/title")
     self.settings_gfx = self.settings.get_node("body/tabs/gfx/")
     self.settings_sound = self.settings.get_node("body/tabs/sound/")
@@ -182,9 +182,9 @@ func _ready():
 
     close_button.connect("pressed", self, "_close_button_pressed")
 
-    self.label_completed = self.get_node("bottom/center/completed")
-    self.label_maps_created = self.get_node("bottom/center/maps_created")
-    self.label_version = self.get_node("middle/center/game_panel/under_logo/copy")
+    self.label_completed = .get_node("bottom/center/completed")
+    self.label_maps_created = .get_node("bottom/center/maps_created")
+    self.label_version = .get_node("middle/center/game_panel/under_logo/copy")
 
     self.refresh_buttons_labels()
     self.load_maps_menu()
@@ -254,7 +254,8 @@ func start_demo_mode():
 
 func load_maps_menu():
     maps_sub_menu.hide()
-    self.add_child(maps_sub_menu)
+	# TODO: This might not work (was self.)
+    .add_child(maps_sub_menu)
 
     maps_sub_menu_anchor = maps_sub_menu.get_node("middle")
     maps_close_button = maps_sub_menu.get_node("bottom/control/menu_controls/close")
@@ -336,7 +337,7 @@ func manage_close_button():
         self.close_button.hide()
 
 func refresh_buttons_labels():
-    get_tree().call_group(0, "translate_me", "refresh_label")
+    .get_tree().call_group(0, "translate_me", "refresh_label")
     var items_for_refresh = [
         ['sound_enabled', 'sound_toggle_label'],
         ['music_enabled', 'music_toggle_label'],
@@ -356,7 +357,7 @@ func refresh_buttons_labels():
 
     language_cycle_label.set_trans_key(self.root.settings['language'].to_upper())
 
-    if Globals.get('tof/hud_allow_overscan'):
+    if ProjectSettings.get('tof/hud_allow_overscan'):
         self.overscan_group.show()
     else:
         self.overscan_group.hide()

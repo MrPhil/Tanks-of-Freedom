@@ -22,7 +22,7 @@ func _initialize():
     self.connect_buttons()
 
 func select_prompt_template():
-    if Globals.get("tof/mobile_prompt"):
+    if ProjectSettings.get("tof/mobile_prompt"):
         self.popup = self.popup_mobile_template.instance()
     else:
         self.popup = self.popup_regular_template.instance()
@@ -52,14 +52,14 @@ func detach_panel():
     if self.current_container != null:
         self.current_container.remove_child(self.popup)
         self.current_container = null
-    self.disconnect()
+    self.localDisconnect()
     self.clear_prepopulate()
 
 func connect_buttons():
     self.confirm_button.connect("pressed", self, "_confirm_button_pressed")
     self.cancel_button.connect("pressed", self, "_cancel_button_pressed")
 
-func disconnect():
+func localDisconnect():
     self.bound_object = null
     self.bound_method = null
 
@@ -69,7 +69,7 @@ func fill_labels(title, message, confirm, cancel):
     self.confirm_button.set_trans_key(confirm)
     self.cancel_button.set_trans_key(cancel)
 
-func connect(bound_object, bound_method):
+func localConnect(bound_object, bound_method):
     self.bound_object = bound_object
     self.bound_method = bound_method
 

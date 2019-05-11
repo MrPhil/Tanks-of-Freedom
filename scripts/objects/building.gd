@@ -35,13 +35,13 @@ func get_spawn_point_position():  #-- NOTE: Automatically converted by Godot 2 t
 
 func get_initial_position():  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 	position_on_map = current_map.world_to_map(self.get_position())  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
-	spawn_point = Vector2(position_on_map) + spawn_point_position
+	spawn_point = position_on_map + spawn_point_position
 	return position_on_map
 
 func set_pos_map(new_position):
 	self.set_position(current_map.map_to_world(new_position))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 	position_on_map = new_position
-	spawn_point = Vector2(position_on_map) + spawn_point_position
+	spawn_point = position_on_map + spawn_point_position
 
 func claim(new_player, turn):
 	if new_player == -1:

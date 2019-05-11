@@ -238,7 +238,7 @@ func toggle_menu():
     if self.bag.menu_back.perform_back():
         return
 
-    if self.is_hidden():
+    if .is_hidden():
         self.is_suspended = false
         self.bag.controllers.workshop_menu_controller.show_workshop()
     else:
