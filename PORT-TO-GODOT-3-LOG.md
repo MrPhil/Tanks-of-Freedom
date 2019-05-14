@@ -37,8 +37,10 @@
 
 ## May 13, 2019 - MrPhil
 1. I reorder the log so the newest post is at the top and the first post is at the bottom.
-2. I found the compiler wasn't hitting the cyclic preload problems and instead fixed a bunch of other little things
-3. I commented out the call the the translate_me call [TODO]
+1. I found the compiler wasn't hitting the cyclic preload problems and instead fixed a bunch of other little things
+1. I commented out the call the the translate_me call, not sure if more needs to be done? [TODO]
+1. Change the preload call for bag (dependency_container.gd) to load, I think that fixed the cyclic loading problem.
+1. 
 
 ## May 11th, 2019 - MrPhil
 1. Branch Export to Godot 3.1.1
