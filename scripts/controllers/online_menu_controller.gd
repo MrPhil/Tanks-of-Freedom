@@ -1,7 +1,7 @@
 extends "res://scripts/bag_aware.gd"
 
 var online_menu = preload("res://gui/online_menu.tscn").instance()
-var multiplayer = preload("res://scripts/controllers/multiplayer_menu_controller.gd").new()
+var onlineMultiplayer = preload("res://scripts/controllers/multiplayer_menu_controller.gd").new()
 var controls
 var background
 var middle_container
@@ -16,7 +16,7 @@ var registration_successfull = false
 var refreshed = false
 
 func _initialize():
-    self.multiplayer._init_bag(self.bag)
+    self.onlineMultiplayer._init_bag(self.bag)
     self.bind()
     self.attach_campaign_menu()
 
@@ -35,7 +35,7 @@ func bind():
     self.middle_container = self.online_menu.get_node('middle/anchor')
     self.middle_container.hide()
 
-    self.multiplayer.bind()
+    self.onlineMultiplayer.bind()
 
 func _back_button_pressed():
     self.bag.root.sound_controller.play('menu')
@@ -57,7 +57,7 @@ func show():
     if self.bag.root.settings['online_player_id'] == null:
         self.show_register_confirmation()
     elif not self.refreshed:
-        self.multiplayer.refresh_matches_list()
+        self.onlineMultiplayer.refresh_matches_list()
     if self.bag.map_list.maps.size() == 0:
         self.upload_button.set_disabled(true)
     else:
@@ -209,7 +209,7 @@ func hide_register_confirmation():
         self.bag.root.menu.online_button.grab_focus()
     else:
         self.download_button.grab_focus()
-        self.multiplayer.refresh_matches_list()
+        self.onlineMultiplayer.refresh_matches_list()
 
 func show_map_download_code_prompt():
     self.controls.hide()

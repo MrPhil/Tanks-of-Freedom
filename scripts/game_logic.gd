@@ -411,7 +411,8 @@ func write_settings_to_file():
     self.bag.file_handler.write(self.SETTINGS_PATH, self.settings)
 
 func _ready():
-    self.bag = preload('res://scripts/services/dependency_container.gd').new()
+	# changed to an onready var
+    self.bag = load('res://scripts/services/dependency_container.gd').new()
     self.scale_root = get_node("/root/game/viewport/pixel_scale")
     self.read_settings_from_file()
     TranslationServer.set_locale(self.settings['language'])
