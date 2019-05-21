@@ -35,6 +35,9 @@
 
 # Porting Log
 
+## May 21, 2019 - MrPhil
+- Sadly, I probably will not go any further.  I've run into some problems with the file handling system. The documentation is missing some information and the debugging enviroment is making it really hard to unravel what is going on.  This is the kind of thing that drives me away from "game engines."  I'm too much of a grey beard when it comes to debugging.  I just find it too painful to do when my normal methods and tools aren't available.
+
 ## May 13, 2019 - MrPhil
 1. I reorder the log so the newest post is at the top and the first post is at the bottom.
 1. I found the compiler wasn't hitting the cyclic preload problems and instead fixed a bunch of other little things
